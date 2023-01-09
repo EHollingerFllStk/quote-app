@@ -1,12 +1,15 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios";
+import Quote from "./Quote";
+
+
 
 function App() {
 
   const getQuote = () => {
     axios.get('https://api.quotable.io/random')
       .then((res) => {
-        alert(res.data.content);
+        setQuote(res.data.content);
       }).catch((err) => {
         alert(err);
       })
