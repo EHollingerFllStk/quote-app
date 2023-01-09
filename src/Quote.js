@@ -4,6 +4,11 @@ import { Paper, Blockquote, Button, Box, Divider, Space, ActionIcon } from "@man
 
 export default function Quote(props) {
     const { content, author } = props;
+
+    if (!content) {
+        return null;
+      }
+      
     return (
     <Paper shadow="xs" p="md" style={{ minWidth: "80vw" }}>
         <Blockquote cite={author ? '- ${author}' : "" } >

@@ -2,14 +2,8 @@ import { useEffect, useState } from "react"
 import axios from "axios";
 import Quote from "./Quote";
 
-
-
 function App() {
   const [quote, setQuote] = useState(null);
-
-  if (!content) {
-    return null;
-  }
 
   const getQuote = () => {
     axios.get('https://api.quotable.io/random')
