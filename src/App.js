@@ -5,11 +5,16 @@ import Quote from "./Quote";
 
 
 function App() {
+  const [quote, setQuote] = useState(null);
+
+  if (!content) {
+    return null;
+  }
 
   const getQuote = () => {
     axios.get('https://api.quotable.io/random')
       .then((res) => {
-        setQuote(res.data.content);
+        setQuote(res.data);
       }).catch((err) => {
         alert(err);
       })
@@ -21,7 +26,8 @@ function App() {
 
   return (
     <div>
-      Hello World
+      <Quote author ={quote? quote.author : ""} content = 
+      {quote ? quote.content : ""} />
     </div>
     
   );
