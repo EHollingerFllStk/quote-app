@@ -3,12 +3,12 @@ import { Paper, Blockquote, Button, Box, Divider, Space, ActionIcon } from "@man
 
 
 export default function Quote(props) {
-    const { content, author } = props;
+    const { content, author, getQuote } = props;
 
     if (!content) {
         return null;
       }
-      
+
     return (
     <Paper shadow="xs" p="md" style={{ minWidth: "80vw" }}>
         <Blockquote cite={author ? '- ${author}' : "" } >
@@ -21,7 +21,7 @@ export default function Quote(props) {
             display: "flex", 
             justifycontent: "space-between"
         }}>
-            <Button>New Quote</Button>
+            <Button onClick={getQuote}>New Quote</Button>
         </Box>
 
     </Paper>
