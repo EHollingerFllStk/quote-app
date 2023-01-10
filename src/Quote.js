@@ -2,6 +2,22 @@ import React from "react";
 import { Volume, Copy, BrandTwitter } from 'tabler-icons-react';
 import { Paper, Blockquote, Button, Box, Divider, Space, ActionIcon } from "@mantine/core";
 
+const synth = window.speechSynthesis;
+
+const speak = (content) => {
+    if (synth.speaking) {
+        return;
+    }
+    const toSpeak = new SpeechSynthesisUtterance(content);
+    toSpeak.onend = e => {
+        console.log('Done speaking...');
+    }
+    toSpeak.onerror = e => {
+        console.log ("Error on speaking ...");
+    }
+    synth.speak(toSpeak);
+}
+
 
 export default function Quote(props) {
     const { content, author, getQuote } = props;
@@ -9,6 +25,11 @@ export default function Quote(props) {
     if (!content) {
         return null;
       }
+
+    const handleSpeakOnClick = () => {
+        speak(content);
+    }
+
 
     return (
     <Paper shadow="xs" p="md" style={{ minWidth: "80vw" }}>
@@ -23,7 +44,7 @@ export default function Quote(props) {
             justifycontent: "space-between"
         }}>
             <Box sx={{ display: "flex"}}>
-                <ActionIcon size="lg" variant="outline">
+                <ActionIcon size="lg" variant="outline" onClick={handleSpeakOnClick}>
                     <Volume size={24} />
                 </ActionIcon>
                 <Space w="xs" />
