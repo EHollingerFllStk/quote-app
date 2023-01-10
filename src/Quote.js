@@ -58,7 +58,7 @@ export default function Quote(props) {
                     <Copy size={24} />
                 </ActionIcon>
                 <Space w="xs" />
-                <ActionIcon size="lg" variant="outline">
+                <ActionIcon component="a" target="_blank" href={`https://twitter.com/intent/tweet?text=${content} - ${author}`} size="lg" variant="outline">
                     <BrandTwitter size={24} />
                 </ActionIcon>
                 <Space w="xs" />
