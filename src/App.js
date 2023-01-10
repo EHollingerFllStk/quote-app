@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import axios from "axios";
-import Quote from "./Quote";
 import { Container, Center } from "@mantine/core";
+import { ToastContainer, Zoom } from "react-toastify";
+import Quote from "./Quote";
 
 function App() {
   const [quote, setQuote] = useState(null);
@@ -21,6 +22,7 @@ function App() {
 
   return (
     <div style={{ background: "#22b8cf" }}>
+      <ToastContainer transition={Zoom} autoClose={3000} hideProgressBar={true} icon={false} />
       <Container>
         <Center style={{ height: "100vh"}}>
           <Quote author ={quote? quote.author : ""} content = 

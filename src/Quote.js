@@ -1,6 +1,7 @@
 import React from "react";
 import { Volume, Copy, BrandTwitter } from 'tabler-icons-react';
 import { Paper, Blockquote, Button, Box, Divider, Space, ActionIcon } from "@mantine/core";
+import { toast } from "react-toastify";
 
 const synth = window.speechSynthesis;
 
@@ -30,6 +31,11 @@ export default function Quote(props) {
         speak(content);
     }
 
+    const handleCopyQuote = () => {
+        navigator.clipboard.writeText(content);
+            toast.info("Quote Copied");
+    }
+
 
     return (
     <Paper shadow="xs" p="md" style={{ minWidth: "80vw" }}>
@@ -48,7 +54,7 @@ export default function Quote(props) {
                     <Volume size={24} />
                 </ActionIcon>
                 <Space w="xs" />
-                <ActionIcon size="lg" variant="outline">
+                <ActionIcon size="lg" variant="outline" onClick={handleCopyQuote}>
                     <Copy size={24} />
                 </ActionIcon>
                 <Space w="xs" />
